@@ -66,7 +66,7 @@ RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/AliciaRobot
 RUN git clone -b shiken https://github.com/H1M4N5HU0P/AliciaRobot /root/AliciaRobot
-WORKDIR /root/YoneRobot
+WORKDIR /root/AliciaRobot
 
 #Copy config file to /root/AliciaRobot/AliciaRobot
 COPY ./AliciaRobot/sample_config.py ./AliciaRobot/config.py* /root/AliciaRobot/AliciaRobot/
