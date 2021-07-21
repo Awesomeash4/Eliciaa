@@ -64,11 +64,11 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/YoneRobot
+# Copy Python Requirements to /root/AliciaRobot
 RUN git clone -b shiken https://github.com/H1M4N5HU0P/AliciaRobot /root/AliciaRobot
 WORKDIR /root/YoneRobot
 
-#Copy config file to /root/YoneRobot/YoneRobot
+#Copy config file to /root/AliciaRobot/AliciaRobot
 COPY ./AliciaRobot/sample_config.py ./AliciaRobot/config.py* /root/AliciaRobot/AliciaRobot/
 
 ENV PATH="/home/bot/bin:$PATH"
