@@ -1,6 +1,6 @@
 # COPYRIGHT (C) 2021 @Autichrist
 
-from telethon import events, Button, custom
+from telethon import events, Button, custom, version
 import re, os
 from AliciaRobot.events import register
 from AliciaRobot import telethn as tbot
@@ -14,7 +14,7 @@ async def awake(event):
   aliciaX += "♋I'm Working Properly\n\n"
   aliciaX += "♋ Alicia : 3.0 LATEST\n\n"
   aliciaX += f"♋ My Master : @{OWNER_USERNAME} ☺️\n\n"
-  aliciaX += "♋ Telethon Version : 1.19.5\n\n"
+  aliciaX += f"♋ Telethon Version : {version.__version__}\n\n"
   aliciaX += "I'm Happy To Help You Here! Thanks For Adding Me Here.😊❤️"
   BUTTON = [[Button.url("SUPPORT", f"https://t.me/{SUPPORT_CHAT}"), Button.url("DEVLOPER", f"https://t.me/{OWNER_USERNAME}")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=aliciaX,  buttons=BUTTON)
