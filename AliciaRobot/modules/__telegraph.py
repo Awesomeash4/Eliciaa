@@ -6,8 +6,6 @@ import os
 from PIL import Image
 from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
-
-
 himanshu = "ALICIA"
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=himanshu)
@@ -43,7 +41,7 @@ async def _(event):
                 end = datetime.now()
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
-                await h.edit(f"Uploaded [Here](https://telegra.ph{}) By [Alicia](t.me/AliciaGroup_bot)").format(media_urls[0]), link_preview=True)
+                await h.edit("Uploaded to https://telegra.ph{}".format(media_urls[0]), link_preview=True)
         elif input_str == "t":
             user_object = await tbot.get_entity(r_message.sender_id)
             title_of_page = user_object.first_name # + " " + user_object.last_name
@@ -71,7 +69,7 @@ async def _(event):
             )
             end = datetime.now()
             ms = (end - start).seconds
-            await event.reply(f"Pasted to https://telegra.ph/{} in {} seconds By [Alicia](t.me/AliciaGroup_bot) .".format(response["path"], ms), link_preview=True)
+            await event.reply("Pasted to https://telegra.ph/{} in {} seconds.".format(response["path"], ms), link_preview=True)
     else:
         await event.reply("Reply to a message to get a permanent telegra.ph link.")
 
@@ -79,17 +77,3 @@ async def _(event):
 def resize_image(image):
     im = Image.open(image)
     im.save(image, "PNG")
-
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
-
-# __help__ = """
-#  - /tgm : Get Telegraph Link Of Replied Media
-#  - /tgt: Get Telegraph Link of Replied Text
-# """
-
-__mod_name__ = "Telegraph"
-
-__button__ = ""
-__buttons__ = ""
