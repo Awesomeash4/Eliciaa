@@ -208,7 +208,7 @@ async def makelogo(event):
                   
                   draw.text((x, y), lower_text, font=font, fill="white", stroke_width=2, stroke_fill="black")
                   
-            fname2 = "LogoBydeekingbot.png"
+            fname2 = "logobyalicia.png"
             blueimg.save(fname2, "png")
             await bot.send_file(event.chat_id, fname2, caption="Made By @AliciaGroup_bot")
             if os.path.exists(fname2):

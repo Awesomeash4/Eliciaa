@@ -290,7 +290,7 @@ def info(update: Update, context: CallbackContext):
         text += "\n┣|• This User Is My 'Creator'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n┣|• This user is member of 'King Developer 'Team'."
+        text += "\n┣|• This user is member of 'Alicia Developer 'Team'."
         disaster_level_present = True
     elif user.id in DRAGONS:
         text += "\n┣|• This person is 'Sudo'. his Power level is near to my 'Owner' "
@@ -299,10 +299,10 @@ def info(update: Update, context: CallbackContext):
         text += "\n┣|• This person is my 'Sudo'."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n┣|• Theis person is from 'King Assosication'."
+        text += "\n┣|• Theis person is from 'Alicia Assosication'."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n┣|• This person is from 'King Demons Army'."
+        text += "\n┣|• This person is from 'Alicia Demons Army'."
         disaster_level_present = True
 
     if disaster_level_present:
@@ -422,7 +422,7 @@ def set_about_me(update: Update, context: CallbackContext):
  
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>Current stats of King:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "<b>Current stats of Alicia:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 

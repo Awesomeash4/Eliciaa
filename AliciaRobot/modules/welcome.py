@@ -231,13 +231,13 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                 update.effective_chat.send_message(
-                    text="Whoa! A member of the King Development Team just joined!",
+                    text="Whoa! A member of the Alicia Development Team just joined!",
                 )
 
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                 update.effective_chat.send_message(
-                    text="Huh! A Sudo of King just joined! Stay Alert!",
+                    text="Huh! A Sudo of Alicia just joined! Stay Alert!",
                 )
 
             # Welcome Support
@@ -261,7 +261,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome yourself
             elif new_mem.id == bot.id:
                 update.effective_chat.send_message(
-                    text="Thanks for adding me! Join @King_Support for support.",
+                    text="Thanks for adding me! Join @MafiaBot_Support for support.",
                 )
 
             else:
