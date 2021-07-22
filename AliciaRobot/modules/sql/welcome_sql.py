@@ -66,7 +66,7 @@ DEFAULT_WELCOME_MESSAGES = [
     "Run Forest! ..I mean...{first}.",
     "{first} do 100 push-ups, 100 sit-ups, 100 squats, and 10km running EVERY SINGLE DAY!!!",  # One Punch ma
     "Huh?\nDid someone with a disaster level just join?\nOh wait, it's just {first}.",  # One Punch ma
-    "Hey, {first}, ever heard the King Engine?",  # One Punch ma
+    "Hey, {first}, ever heard the Alicia Engine?",  # One Punch ma
     "Hey, {first}, empty your pockets.",
     "Hey, {first}!, are you strong?",
     "Call the Avengers! - {first} just joined the chat.",
