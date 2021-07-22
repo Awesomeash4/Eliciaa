@@ -210,7 +210,7 @@ async def makelogo(event):
                   
             fname2 = "LogoBydeekingbot.png"
             blueimg.save(fname2, "png")
-            await bot.send_file(event.chat_id, fname2, caption="Made By @deekingbot")
+            await bot.send_file(event.chat_id, fname2, caption="Made By @AliciaGroup_bot")
             if os.path.exists(fname2):
                os.remove(fname2)
     
