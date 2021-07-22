@@ -1,7 +1,8 @@
 __mod_name__ = "Music"
 
 __help__ = """
-Bot Commands
+**ADD @AliciaBotAssistant TO YOUR GROUP AND PLAY MUSIC**
+
 /video <i>query</i>: download video from youtube
 /deezer <i>query</i>: download from deezer
 /music <i>query</i>: download song from yt servers. (API BASED)
