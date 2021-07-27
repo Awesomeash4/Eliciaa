@@ -31,7 +31,8 @@ This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """
 
-@run_async
+
+ 
 @user_admin
 def echo(update: Update, context: CallbackContext):
     args = update.effective_message.text.split(None, 1)
@@ -60,7 +61,7 @@ def markdown_help_sender(update: Update):
     )
 
 
-@run_async
+ 
 def markdown_help(update: Update, context: CallbackContext):
     if update.effective_chat.type != "private":
         update.effective_message.reply_text(
@@ -78,6 +79,10 @@ def markdown_help(update: Update, context: CallbackContext):
         )
         return
     markdown_help_sender(update)
+
+
+__button__ = ""
+__buttons__ = ""
 
 __help__ = """
 *Available commands:*
@@ -126,16 +131,13 @@ To compute fractions, enter expressions as numerator(over)denominator. For examp
 💡`Read From Top`
 """
 
-dispatcher.add_handler(ECHO_HANDLER)
-dispatcher.add_handler(MD_HELP_HANDLER)
-
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.chat_type.groups, run_async=True)
 MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, run_async=True)
 
 dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
-__mod_name__ = "extras"
+__mod_name__ = "Extras"
 __command_list__ = ["id", "echo"]
 __handlers__ = [
     ECHO_HANDLER,
