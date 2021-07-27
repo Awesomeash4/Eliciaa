@@ -303,21 +303,17 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "Here is the help for the *{}* module:\n".format(
+                "「 *HELP FOR* *{}* 」\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
             )
-            query.message.edit_text( 
+            query.message.edit_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [   MOD_BUTTON[module].__button__,
-                        MOD_BUTTONS[module].__buttons__,
-                        [InlineKeyboardButton(text="Back", callback_data="alicia_")]
-                        
-                    ]
+                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
 
@@ -356,7 +352,6 @@ def help_button(update, context):
 
     except BadRequest:
         pass
-
 
 
 def alicia_about_callback(update, context):
