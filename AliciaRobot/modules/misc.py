@@ -129,7 +129,13 @@ To compute fractions, enter expressions as numerator(over)denominator. For examp
 dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
-__mod_name__ = "Extras"
+ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.chat_type.groups, run_async=True)
+MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, run_async=True)
+
+dispatcher.add_handler(ECHO_HANDLER)
+dispatcher.add_handler(MD_HELP_HANDLER)
+
+__mod_name__ = "extras"
 __command_list__ = ["id", "echo"]
 __handlers__ = [
     ECHO_HANDLER,
