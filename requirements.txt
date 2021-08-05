@@ -83,7 +83,7 @@ pyaztro
 # Twitter
 twitter_scraper
 
-gogoanime-api==1.0.3
+gogoanime-api==1.0.2
 PyDictionary==2.0.1
 lottie
 numpy
