@@ -2,20 +2,19 @@ import re
 
 import emoji
 
-IBM_WATSON_CRED_URL = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/bd6b59ba-3134-4dd4-aff2-49a79641ea15"
-IBM_WATSON_CRED_PASSWORD = "UQ1MtTzZhEsMGK094klnfa-7y_4MCpJY1yhd52MXOo3Y"
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 import re
 
 import aiohttp
-from google_trans_new import google_translator
+
+# from google_trans_new import google_translator
+from googletrans import Translator as google_translator
 from pyrogram import filters
 
 from AliciaRobot import BOT_ID, arq
 from AliciaRobot.helper_extra.aichat import add_chat, get_session, remove_chat
 from AliciaRobot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from AliciaRobot import pbot as Alicia
-
+from AliciaRobot import pbot as AliciaRobot
 
 translator = google_translator()
 
@@ -46,8 +45,10 @@ async def fetch(url):
 
 Alicia_chats = []
 en_chats = []
+# AI Chat (C) 2020-2021 by @InukaAsith
 
-@Alicia.on_message(
+
+@AliciaRobot.on_message(
     filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private
 )
 @admins_only
@@ -93,7 +94,7 @@ async def hmm(_, message):
         )
 
 
-@Alicia.on_message(
+@AliciaRobot.on_message(
     filters.text
     & filters.reply
     & ~filters.bot
@@ -129,7 +130,7 @@ async def hmm(client, message):
 
         pro = response
         try:
-            await Alicia.send_chat_action(message.chat.id, "typing")
+            await AliciaRobot.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
@@ -165,12 +166,14 @@ async def hmm(client, message):
             # print (rm)
         try:
             lan = translator.detect(rm)
+            lan = lan.lang
         except:
             return
         test = rm
         if not "en" in lan and not lan == "":
             try:
-                test = translator.translate(test, lang_tgt="en")
+                test = translator.translate(test, dest="en")
+                test = test.text
             except:
                 return
         # test = emoji.demojize(test.strip())
@@ -182,20 +185,23 @@ async def hmm(client, message):
         )
         response = response.replace("Aco", "Alicia")
         response = response.replace("aco", "Alicia")
+        response = response.replace("Luna", "Alicia")
+        response = response.replace("luna", "Alicia")
         pro = response
         if not "en" in lan and not lan == "":
             try:
-                pro = translator.translate(pro, lang_tgt=lan[0])
+                pro = translator.translate(pro, dest=lan)
+                pro = pro.text
             except:
                 return
         try:
-            await Alicia.send_chat_action(message.chat.id, "typing")
+            await AliciaRobot.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
 
 
-@Alicia.on_message(
+@AliciaRobot.on_message(
     filters.text & filters.private & ~filters.edited & filters.reply & ~filters.bot
 )
 async def inuka(client, message):
@@ -232,20 +238,22 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
     # test = emoji.demojize(test.strip())
 
     # Kang with the credits bitches @InukaASiTH
-    test = test.replace("alicia", "Aco")
-    test = test.replace("alicia", "Aco")
+    test = test.replace("Alicia", "Aco")
+    test = test.replace("Alicia", "Aco")
 
     response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
     response = response.replace("Aco", "Alicia")
@@ -253,16 +261,17 @@ async def inuka(client, message):
 
     pro = response
     if not "en" in lan and not lan == "":
-        pro = translator.translate(pro, lang_tgt=lan[0])
+        pro = translator.translate(pro, dest=lan)
+        pro = pro.text
     try:
-        await Alicia.send_chat_action(message.chat.id, "typing")
+        await AliciaRobot.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
 
 
-@Alicia.on_message(
-    filters.regex("alicia|AliciaRobot|hello|Alicia|ALICIA")
+@AliciaRobot.on_message(
+    filters.regex("ALICIA|Alicia|alicia|ALICIAROBOT|AliciaRobot|aliciarobot|Aliciarobot|ALICIABOT|AliciaBot|aliciabot|Aliciabot|HI|Hi||hi|HELLO|Hello|hello|HEY|Hey|hey")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -304,19 +313,21 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
     # test = emoji.demojize(test.strip())
 
-    test = test.replace("alicia", "Aco")
-    test = test.replace("alicia", "Aco")
+    test = test.replace("Alicia", "Aco")
+    test = test.replace("Alicia", "Aco")
     response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
     response = response.replace("Aco", "Alicia")
     response = response.replace("aco", "Alicia")
@@ -324,11 +335,12 @@ async def inuka(client, message):
     pro = response
     if not "en" in lan and not lan == "":
         try:
-            pro = translator.translate(pro, lang_tgt=lan[0])
+            pro = translator.translate(pro, dest=lan)
+            pro = pro.text
         except Exception:
             return
     try:
-        await Alicia.send_chat_action(message.chat.id, "typing")
+        await AliciaRobot.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
