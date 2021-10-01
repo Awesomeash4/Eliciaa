@@ -271,7 +271,7 @@ async def inuka(client, message):
 
 
 @AliciaRobot.on_message(
-    filters.regex("ALICIA|Alicia|alicia|ALICIAROBOT|AliciaRobot|aliciarobot|Aliciarobot|ALICIABOT|AliciaBot|aliciabot|Aliciabot|HI|Hi||hi|HELLO|Hello|hello|HEY|Hey|hey")
+    filters.regex("ALICIA|Alicia|alicia")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
