@@ -160,13 +160,13 @@ def list_all_chats(update: Update, context: CallbackContext):
             sleep(e.retry_after)
     update.effective_message.reply_text(text, parse_mode="HTML")
 
-__help__ = """
-Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
+__help__ = f"""
+We have highly artificial intelligence chatbot of telegram which provides you real and attractive experience of chatting.
+
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
   
- Reports bugs at Kuki-api.tk
-*Powered by ItelAi* (https://github/itelai) from @KukiUpdates
+ Reports bugs at {SUPPORT_CHAT}
 """
 
 __mod_name__ = "ChatBot"
