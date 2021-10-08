@@ -172,7 +172,7 @@ We have highly artificial intelligence chatbot of telegram which provides you re
 __mod_name__ = "ChatBot"
 
 
-CHATBOTK_HANDLER = CommandHandler("chatbot", alicia, run_async=True)
+CHATBOTK_HANDLER = CommandHandler("ChatBot", alicia, run_async=True)
 ADD_CHAT_HANDLER = CallbackQueryHandler(aliciaadd, pattern=r"add_chat", run_async=True)
 RM_CHAT_HANDLER = CallbackQueryHandler(aliciarm, pattern=r"rm_chat", run_async=True)
 CHATBOT_HANDLER = MessageHandler(
