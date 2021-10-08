@@ -170,7 +170,8 @@ We have highly artificial intelligence chatbot of telegram which provides you re
 """
 
 __mod_name__ = "ChatBot"
-
+__button__ = ""
+__buttons__ = ""
 
 CHATBOTK_HANDLER = CommandHandler("ChatBot", alicia, run_async=True)
 ADD_CHAT_HANDLER = CallbackQueryHandler(aliciaadd, pattern=r"add_chat", run_async=True)
