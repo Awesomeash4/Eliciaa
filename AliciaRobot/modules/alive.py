@@ -15,7 +15,7 @@ async def awake(event):
   aliciaX += "♋ Alicia : 3.0 LATEST\n\n"
   aliciaX += f"♋ My Master : [Himanshu](t.me/{OWNER_USERNAME}) ☺️\n\n"
   aliciaX += f"♋ Telethon Version : {version.__version__}\n\n"
-  aliciaX += "I'm Happy To Help You Here! Thanks For Adding Me Here.😊❤️"
+  aliciaX += "I'm Happy To Help You! Thanks For Adding Me Here.😊❤️"
   BUTTON = [[Button.url("SUPPORT", f"https://t.me/{SUPPORT_CHAT}"), Button.url("DEVLOPER", f"https://t.me/{OWNER_USERNAME}")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=aliciaX,  buttons=BUTTON)
 
@@ -37,7 +37,7 @@ async def callback_query_handler(event):
   aliciaX += "♋ Alicia Version : 2.0 LATEST\n\n"
   aliciaX += f"♋ My Master : [Himanshu](t.me/{OWNER_USERNAME}) ☺️\n\n"
   aliciaX += "♋ Telethon Version : 1.19.5\n\n"
-  aliciaX += "I'm Happy To Help You Here! Thanks For Adding Me Here.😊❤️"
+  aliciaX += "I'm Happy To Help You! Thanks For Adding Me Here.😊❤️"
   BUTTON = [[Button.url("SUPPORT", f"https://t.me/{SUPPORT_CHAT}"), Button.url("DEVLOPER", f"https://t.me/{OWNER_USERNAME}")]]
   await event.edit(text=aliciaX, buttons=BUTTONS)
 
