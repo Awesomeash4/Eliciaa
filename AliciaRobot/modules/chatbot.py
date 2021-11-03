@@ -1,24 +1,3 @@
-# Copyright (C) 2021 MoeZilla
-
-# This file is part of Kuki (Telegram Bot)
-
-# Follow My Github Id https://github.com/MoeZilla/
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-
 
 import json
 import re
@@ -140,7 +119,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        aliciaurl = requests.get('https://www.kuki-api.tk/api/Kuki/MoeZilla/message='+Message)
+        aliciaurl = requests.get('https://kukiapi.xyz/api/apikey=ALICIAROBOT/alicia/h1m4n5hu0p/message='+Message)
         Alicia = json.loads(aliciaurl.text)
         alicia = Alicia['reply']
         sleep(0.3)
@@ -160,16 +139,14 @@ def list_all_chats(update: Update, context: CallbackContext):
             sleep(e.retry_after)
     update.effective_message.reply_text(text, parse_mode="HTML")
 
-__help__ = f"""
-We have highly artificial intelligence chatbot of telegram which provides you real and attractive experience of chatting.
-
+__help__ = f"""We have highly artificial intelligence chatbot of telegram which provides you real and attractive experience of chatting.
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
   
  Reports bugs at {SUPPORT_CHAT}
 """
 
-__mod_name__ = "ChatBot"
+__mod_name__ = "Chatbot"
 __button__ = ""
 __buttons__ = ""
 
