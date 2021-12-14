@@ -14,64 +14,79 @@ class Config(object):
     # REQUIRED
     # Login to https://my.telegram.org and fill in these slots with the details given by it
 
-    API_ID = 2857558  # integer value, dont use ""
-    API_HASH = "1038be815e038592fa2b483c13dd6c4b"
-    TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 1212368262  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "H1M4N5HU0P"
-    SUPPORT_CHAT = "MafiaBot_Support"  # Your own group for support, do not add the @
-    JOIN_LOGGER = (
-        -1001204088829
-    )  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = (
-        -1001459323267
-    )  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"
 
-    # RECOMMENDED
-    SQLALCHEMY_DATABASE_URI = "postgresql://vhyrades:gOlW9HnB8gjo80BKZMKLdQucme9Si2nB@fanny.db.elephantsql.com/vhyrades" # needed for any database modules
-    LOAD = []
-    NO_LOAD = ["rss", "cleaner", "connection", "math"]
-    WEBHOOK = False
-    INFOPIC = True
+    try:
+        OWNER_ID = 1212368262
+    except ValueError:
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
+
+    JOIN_LOGGER = -1001204088829
+    OWNER_USERNAME = "H1M4N5HU0P"
+    try:
+        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
+    except ValueError:
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
+
+    try:
+        DEMONS = set(int(x) for x in Config.DEMONS or [])
+    except ValueError:
+        raise Exception("Your support users list does not contain valid integers.")
+
+    try:
+        WOLVES = set(int(x) for x in Config.WOLVES or [])
+    except ValueError:
+        raise Exception("Your whitelisted users list does not contain valid integers.")
+
+    try:
+        TIGERS = set(int(x) for x in Config.TIGERS or [])
+    except ValueError:
+        raise Exception("Your tiger users list does not contain valid integers.")
+
+   
+
+    EVENT_LOGS = -1001459323267
+    WEBHOOK = Config.WEBHOOK
     URL = "https://aliciarobot.herokuapp.com/"
-    SPAMWATCH_API = "sJsaTYZnYqTR7z~pq8OAdVj2UIktizitY5k6ivnErXkArICQv_ZbNmG6HMDlE7Lg"  # go to support.spamwat.ch to get key
-    SPAMWATCH_SUPPORT_CHAT = "@SpamWatchSupport"
+    PORT = 5000
+    CERT_PATH = Config.CERT_PATH
+    API_ID = 2857558
+    API_HASH = "1038be815e038592fa2b483c13dd6c4b"
+
+    DB_URI = "postgresql://vhyrades:gOlW9HnB8gjo80BKZMKLdQucme9Si2nB@fanny.db.elephantsql.com/vhyrades"
     MONGO_DB_URI = "mongodb+srv://AliciaRobotOP:AliciaRobotOP@cluster0.pfhfb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-    BOT_ID = 1613196478
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     TEMP_DOWNLOAD_DIRECTORY = "./"
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
+    BOT_ID = 1613196478
+    VIRUS_API_KEY = Config.VIRUS_API_KEY
+    DONATION_LINK = Config.DONATION_LINK
+    LOAD = Config.LOAD
+    NO_LOAD = "rss"
+    DEL_CMDS = Config.DEL_CMDS
+    STRICT_GBAN = True
+    WORKERS = Config.WORKERS
+    BAN_STICKER = Config.BAN_STICKER
+    ALLOW_EXCL = True
+    CASH_API_KEY = Config.CASH_API_KEY
+    TIME_API_KEY = Config.TIME_API_KEY
+    TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"
+    AI_API_KEY = Config.AI_API_KEY
+    WALL_API = Config.WALL_API
+    SUPPORT_CHAT = "MafiaBot_Support"
+    SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
+    SPAMWATCH_API = "sJsaTYZnYqTR7z~pq8OAdVj2UIktizitY5k6ivnErXkArICQv_ZbNmG6HMDlE7Lg"
+    INFOPIC = Config.INFOPIC
     REDIS_URL = "redis://:pf5a846bd88f2da1b37e94c9a66af70d4413d6a9af501d251661fc66d2bac54f8@ec2-34-227-200-242.compute-1.amazonaws.com:24559"
     STRING_SESSION = "1AZWarzsBu4JME17PtDItxFthl0IJ0WBrnkP8EyL7Wk-G9xw8ysL40HvXZguTOLXc6IRXhbehHL7rSzPRc-AhT4Q5bbLj7VAYKda_d-TBcdckJZENCOD4daN8xGDX41m_sTRwXBBvYJg7M3OJywow_nN89TfbEu1Ui3jAS46Heom1QLdw9n5Aewm9zxjQrWF_99fZIlYId-Akoz7FxA88TKOC_NJDwt_ST-u6xAQJNhXcUxfuewoEOtyGuoMezi5v5bIMTBiGNKkojlxHCHS2qnNCQYlBLiklIS_xGVPbdDw95JPAYfgwNRgPMUaBvXyu3Qd_4iGIIoL-riBZJ923fCO9m-bZRFI="
     
-    # OPTIONAL
-    ##List of id's -  (not usernames) for users which have sudo access to the bot.
-    DRAGONS = get_user_list("elevated_users.json", "sudos")
-    ##List of id's - (not usernames) for developers who will have the same perms as the owner
-    DEV_USERS = get_user_list("elevated_users.json", "devs")
-    ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
-    DEMONS = get_user_list("elevated_users.json", "supports")
-    # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
-    TIGERS = get_user_list("elevated_users.json", "tigers")
-    WOLVES = get_user_list("elevated_users.json", "whitelists")
-    DONATION_LINK = None  # EG, paypal
-    CERT_PATH = None
-    PORT = 5000
-    DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
-    STRICT_GBAN = True
-    WORKERS = (
-        8  # Number of subthreads to use. Set as number of threads your processor uses
-    )
-    BAN_STICKER = ""  # banhammer marie sticker id, the bot will send this sticker before banning or kicking a user in chat.
-    ALLOW_EXCL = True  # Allow ! commands as well as / (Leave this to true so that blacklist can work)
-    CASH_API_KEY = (
-        "awoo"  # Get your API key from https://www.alphavantage.co/support/#api-key
-    )
-    TIME_API_KEY = "awoo"  # Get your API key from https://timezonedb.com/api
-    WALL_API = (
-        "awoo"  # For wallpapers, get one from https://wall.alphacoders.com/api.php
-    )
-    AI_API_KEY = "awoo"  # For chatbot, get one from https://coffeehouse.intellivoid.net/dashboard
-    BL_CHATS = []  # List of groups that you want blacklisted.
-    SPAMMERS = None
+    try:
+        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
+    except ValueError:
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
+
 
 class Production(Config):
     LOGGER = True
@@ -79,4 +94,78 @@ class Production(Config):
 
 class Development(Config):
     LOGGER = True
+
+    TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"
+
+    try:
+        OWNER_ID = 1212368262
+    except ValueError:
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
+
+    JOIN_LOGGER = -1001204088829
+    OWNER_USERNAME = "H1M4N5HU0P"
+    try:
+        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
+    except ValueError:
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
+
+    try:
+        DEMONS = set(int(x) for x in Config.DEMONS or [])
+    except ValueError:
+        raise Exception("Your support users list does not contain valid integers.")
+
+    try:
+        WOLVES = set(int(x) for x in Config.WOLVES or [])
+    except ValueError:
+        raise Exception("Your whitelisted users list does not contain valid integers.")
+
+    try:
+        TIGERS = set(int(x) for x in Config.TIGERS or [])
+    except ValueError:
+        raise Exception("Your tiger users list does not contain valid integers.")
+
+   
+
+    EVENT_LOGS = -1001459323267
+    WEBHOOK = Config.WEBHOOK
+    URL = "https://aliciarobot.herokuapp.com/"
+    PORT = 5000
+    CERT_PATH = Config.CERT_PATH
+    API_ID = 2857558
+    API_HASH = "1038be815e038592fa2b483c13dd6c4b"
+
+    DB_URI = "postgresql://vhyrades:gOlW9HnB8gjo80BKZMKLdQucme9Si2nB@fanny.db.elephantsql.com/vhyrades"
+    MONGO_DB_URI = "mongodb+srv://AliciaRobotOP:AliciaRobotOP@cluster0.pfhfb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+    TEMP_DOWNLOAD_DIRECTORY = "./"
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
+    BOT_ID = 1613196478
+    VIRUS_API_KEY = Config.VIRUS_API_KEY
+    DONATION_LINK = Config.DONATION_LINK
+    LOAD = Config.LOAD
+    NO_LOAD = "rss"
+    DEL_CMDS = Config.DEL_CMDS
+    STRICT_GBAN = True
+    WORKERS = Config.WORKERS
+    BAN_STICKER = Config.BAN_STICKER
+    ALLOW_EXCL = True
+    CASH_API_KEY = Config.CASH_API_KEY
+    TIME_API_KEY = Config.TIME_API_KEY
+    TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"
+    AI_API_KEY = Config.AI_API_KEY
+    WALL_API = Config.WALL_API
+    SUPPORT_CHAT = "MafiaBot_Support"
+    SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
+    SPAMWATCH_API = "sJsaTYZnYqTR7z~pq8OAdVj2UIktizitY5k6ivnErXkArICQv_ZbNmG6HMDlE7Lg"
+    INFOPIC = Config.INFOPIC
+    REDIS_URL = "redis://:pf5a846bd88f2da1b37e94c9a66af70d4413d6a9af501d251661fc66d2bac54f8@ec2-34-227-200-242.compute-1.amazonaws.com:24559"
+    STRING_SESSION = "1AZWarzsBu4JME17PtDItxFthl0IJ0WBrnkP8EyL7Wk-G9xw8ysL40HvXZguTOLXc6IRXhbehHL7rSzPRc-AhT4Q5bbLj7VAYKda_d-TBcdckJZENCOD4daN8xGDX41m_sTRwXBBvYJg7M3OJywow_nN89TfbEu1Ui3jAS46Heom1QLdw9n5Aewm9zxjQrWF_99fZIlYId-Akoz7FxA88TKOC_NJDwt_ST-u6xAQJNhXcUxfuewoEOtyGuoMezi5v5bIMTBiGNKkojlxHCHS2qnNCQYlBLiklIS_xGVPbdDw95JPAYfgwNRgPMUaBvXyu3Qd_4iGIIoL-riBZJ923fCO9m-bZRFI="
+    
+    try:
+        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
+    except ValueError:
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
+
 
