@@ -35,11 +35,11 @@ class Config(object):
     NO_LOAD = "rss"
     STRICT_GBAN = True
     ALLOW_CHATS = True
-    TIGERS = 1212368262
-    WOLVES = 1212368262
-    DEMONS = 1212368262
-    DEV_USERS = 1212368262
-    DRAGONS = 1212368262
+    TIGERS = ""
+    WOLVES = ""
+    DEMONS = ""
+    DEV_USERS = ""
+    DRAGONS = ""
     BL_CHATS = None
     ALLOW_EXCL = True
     TOKEN = "1613196478:AAHzs8A_73OkOBISpQ5emx5ToDxMlJu0XmU"
